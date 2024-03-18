@@ -20,5 +20,11 @@ namespace BookLibrary.API.Controllers
         {
             return Ok(_bookService.SearchBookByFilters(bookSearchViewModel));
         }
+
+        [HttpPost("CreateBook")]
+        public async Task<IActionResult> CreateBook(BookViewModel bookViewModel)
+        {
+            return Ok(await _bookService.BookViewModel(bookViewModel) ? "Book inserted" : "Book incorrect");
+        }
     }
 }

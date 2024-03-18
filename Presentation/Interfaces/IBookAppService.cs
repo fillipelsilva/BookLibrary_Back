@@ -9,6 +9,7 @@ namespace Presentation.Interfaces
 {
     public interface IBookAppService
     {
+        Task<bool> BookViewModel(BookViewModel bookViewModel);
         List<BookViewModel> SearchBookByFilters(BookSearchViewModel bookSearchViewModel);
     }
 }

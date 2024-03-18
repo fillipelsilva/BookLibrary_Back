@@ -1,4 +1,5 @@
 ﻿using Core.Entities;
+using Core.Messages;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,9 +8,8 @@ using System.Threading.Tasks;
 
 namespace Core.Interfaces
 {
-    public interface IBookRepository 
+    public interface IMediatorHandler
     {
-        List<Book> SearchBookByFilters(string type, string value);
-        Task Create(Book book);
+        Task<bool> SendCommand<T>(T command) where T : Command;
     }
 }

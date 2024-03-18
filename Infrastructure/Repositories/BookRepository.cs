@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Infrastructure.Repositories
 {
-    public class BookRepository : IBookRepository 
+    public class BookRepository : IBookRepository
     {
         protected BookContext _context;
         protected DbSet<Book> _dbSet;
@@ -20,6 +20,12 @@ namespace Infrastructure.Repositories
         {
             _dbSet = context.Set<Book>();
             _context = context;
+        }
+
+        public async Task Create(Book book)
+        {
+            await _dbSet.AddAsync(book);
+            await _context.SaveChangesAsync();
         }
 
         public List<Book> SearchBookByFilters(string type, string value)

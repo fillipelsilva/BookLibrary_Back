@@ -32,5 +32,6 @@ namespace Core.Entities
         }
 
         protected Book() { }
+
     }
 }

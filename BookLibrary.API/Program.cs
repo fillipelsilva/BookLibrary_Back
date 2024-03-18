@@ -2,6 +2,7 @@
 using Infrastructure.Context;
 using IoC;
 using Presentation.AutoMapper;
+using System.Reflection;
 
 namespace BookLibrary.API
 {
@@ -21,6 +22,7 @@ namespace BookLibrary.API
             builder.Services.AddDbContext<BookContext>(ServiceLifetime.Scoped);
             NativeInjector.RegisterServices(builder.Services);
             builder.Services.AddAutoMapper(typeof(AutoMapperSetup));
+            builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(Assembly.GetExecutingAssembly()));
 
             var app = builder.Build();
 
